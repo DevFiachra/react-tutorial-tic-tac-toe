@@ -40,6 +40,11 @@ class Board extends React.Component {
 
   handleClick(i){
       const squares = this.state.squares.slice();
+      // adds condition to ignore click event ig the game is won or if a square has previously been clicked
+      if (calculateWinner(squares) || squares[i]){
+        return;
+      }
+
       squares[i] = this.state.xIsNext ? "X" : "O";
       this.setState({
         squares: squares,
